@@ -20,20 +20,20 @@ gradle clean jar
 ```
 
 
+
 Run:
 ```
-java -jar build/libs/ilivalidator-nplso.jar --config models/so_nutzungsplanung_20171118.toml --modeldir "http://models.geo.admin.ch;models" --plugins plugins/ /Users/stefan/Downloads/2457.xtf
+java -jar build/libs/ilivalidator-nplso.jar --config models/so_nutzungsplanung_20171118.toml --modeldir "http://models.geo.admin.ch;models" --plugins plugins/ /Users/stefan/Downloads/2405.xtf 2>&1 | tee fubar.log
 ```
 
 
 
 
 ## TODO
-```
-        CLASS ClassZA =
-			Geometrie : SURFACE WITH (STRAIGHTS,ARCS) VERTEX Lkoord WITHOUT OVERLAPS > 0.001;
-			Art: (a, b, c);
-			SET CONSTRAINT WHERE Art == #a : INTERLIS.areAreas(ALL, UNDEFINED, >> Geometrie);
-		END ClassZA;
 
+
+## QGIS
+
+```
+"typ_kt" IN ('N681_Empfindlichkeitsstufe_II','N682_Empfindlichkeitsstufe_II_aufgestuft','N683_Empfindlichkeitsstufe_III','N684_Empfindlichkeitsstufe_III_aufgestuft','N685_Empfindlichkeitsstufe_IV', 'N686_keine_Empfindlichkeitsstufe')
 ```

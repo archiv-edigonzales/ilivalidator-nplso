@@ -358,14 +358,126 @@ VERSION "2017-11-18"  =
       Typ_Grundnutzung -- {0..*} Typ_Grundnutzung;
       Dokument (EXTERNAL) -- {0..*} SO_Nutzungsplanung_20171118.Rechtsvorschriften.Dokument;
     END Typ_Grundnutzung_Dokument;
-    
-    
+        
     CONSTRAINTS OF Typ_Grundnutzung = 
-        !!@ ilivalid.msg = "Typ '{Typ_Kt}' ist mit keinem Dokument verknüpft."
-    	MANDATORY CONSTRAINT ((INTERLIS.objectCount(Dokument)>=1) AND (Typ_Kt == #N169_weitere_eingeschraenkte_Bauzonen)) 
+        !!@ ilivalid.msg = "Typ '{Typ_Kt}' (Typ_Grundnutzung) ist mit keinem Dokument verknüpft."
+    	MANDATORY CONSTRAINT 
+    		(
+				INTERLIS.objectCount(Dokument)>=1 
+				AND 
+				(
+					Typ_Kt == #N110_Wohnzone_1_G
+					OR
+					Typ_Kt == #N111_Wohnzone_2_G
+					OR
+					Typ_Kt == #N112_Wohnzone_3_G
+					OR
+					Typ_Kt == #N113_Wohnzone_4_G
+					OR
+					Typ_Kt == #N114_Wohnzone_5_G
+					OR
+					Typ_Kt == #N115_Wohnzone_6_G
+					OR
+					Typ_Kt == #N116_Wohnzone_7_G_und_groesser
+					OR
+					Typ_Kt == #N117_Zone_fuer_Terrassenhaeuser_Terrassensiedlung
+					OR
+					Typ_Kt == #N120_Gewerbezone_ohne_Wohnen
+					OR
+					Typ_Kt == #N121_Industriezone
+					OR
+					Typ_Kt == #N122_Arbeitszone
+					OR
+					Typ_Kt == #N130_Gewerbezone_mit_Wohnen_Mischzone
+					OR
+					Typ_Kt == #N131_Gewerbezone_mit_Wohnen_Mischzone_2_G
+					OR
+					Typ_Kt == #N132_Gewerbezone_mit_Wohnen_Mischzone_3_G
+					OR
+					Typ_Kt == #N133_Gewerbezone_mit_Wohnen_Mischzone_4_G_und_groesser
+					OR
+					Typ_Kt == #N134_Zone_fuer_publikumsintensive_Anlagen
+					OR
+					Typ_Kt == #N140_Kernzone
+					OR
+					Typ_Kt == #N141_Zentrumszone
+					OR
+					Typ_Kt == #N142_Erhaltungszone
+					OR
+					Typ_Kt == #N150_Zone_fuer_oeffentliche_Bauten
+					OR
+					Typ_Kt == #N151_Zone_fuer_oeffentliche_Anlagen
+					OR
+					Typ_Kt == #N160_Gruen_und_Freihaltezone_innerhalb_Bauzone
+					OR
+					Typ_Kt == #N161_kommunale_Uferschutzzone_innerhalb_Bauzone
+					OR
+					Typ_Kt == #N162_Landwirtschaftliche_Kernzone
+					OR
+					Typ_Kt == #N163_Weilerzone
+					OR
+					Typ_Kt == #N169_weitere_eingeschraenkte_Bauzonen
+					OR
+					Typ_Kt == #N170_Zone_fuer_Freizeit_und_Erholung
+					OR
+					Typ_Kt == #N190_Spezialzone
+					OR
+					Typ_Kt == #N220_Spezielle_Landwirtschaftszone
+					OR
+					Typ_Kt == #N230_Rebbauzone
+					OR
+					Typ_Kt == #N290_weitere_Landwirtschaftszonen
+					OR
+					Typ_Kt == #N310_kommunale_Naturschutzzone
+					OR
+					Typ_Kt == #N311_Waldrandschutzzone
+					OR
+					Typ_Kt == #N319_weitere_Schutzzonen_fuer_Lebensraeume_und_Landschaften
+					OR
+					Typ_Kt == #N390_weitere_Schutzzonen_ausserhalb_Bauzonen
+					OR
+					Typ_Kt == #N490_Golfzone
+					OR
+					Typ_Kt == #N491_Abbauzone
+					OR
+					Typ_Kt == #N492_Deponiezone
+					OR
+					Typ_Kt == #N499_weitere_Bauzonen_nach_Art18_RPG_ausserhalb_Bauzonen
+				)
+    		) 
     		OR 
     		(
-    			Typ_Kt != #N169_weitere_eingeschraenkte_Bauzonen
+				Typ_Kt == #N180_Verkehrszone_Strasse
+				OR
+				Typ_Kt == #N181_Verkehrszone_Bahnareal
+				OR
+				Typ_Kt == #N182_Verkehrszone_Flugplatzareal
+				OR            
+				Typ_Kt == #N189_weitere_Verkehrszonen
+				OR
+				Typ_Kt == #N210_Landwirtschaftszone
+				OR
+				Typ_Kt == #N320_Gewaesser
+				OR
+				Typ_Kt == #N329_weitere_Zonen_fuer_Gewaesser_und_ihre_Ufer
+				OR
+				Typ_Kt == #N420_Verkehrsflaeche_Strasse
+				OR
+				Typ_Kt == #N421_Verkehrsflaeche_Bahnareal
+				OR
+				Typ_Kt == #N422_Verkehrsflaeche_Flugplatzareal
+				OR
+				Typ_Kt == #N429_weitere_Verkehrsflaechen
+				OR
+				Typ_Kt == #N430_Reservezone_Wohnzone_Mischzone_Kernzone_Zentrumszone
+				OR
+				Typ_Kt == #N431_Reservezone_Arbeiten
+				OR
+				Typ_Kt == #N432_Reservezone_OeBA
+				OR
+				Typ_Kt == #N439_Reservezone
+				OR
+				Typ_Kt == #N440_Wald
     		); 
     END;
 
@@ -375,7 +487,7 @@ VERSION "2017-11-18"  =
       Typ_Ueberlagernd_Flaeche -- {0..*} Typ_Ueberlagernd_Flaeche;
       Dokument (EXTERNAL) -- {0..*} SO_Nutzungsplanung_20171118.Rechtsvorschriften.Dokument;
     END Typ_Ueberlagernd_Flaeche_Dokument;
-
+    
     /** Siehe in der Arbeitshilfe
      */
     ASSOCIATION Typ_Ueberlagernd_Linie_Dokument =
@@ -390,6 +502,133 @@ VERSION "2017-11-18"  =
       Dokument (EXTERNAL) -- {0..*} SO_Nutzungsplanung_20171118.Rechtsvorschriften.Dokument;
     END Typ_Ueberlagernd_Punkt_Dokument;
 
+    
+    CONSTRAINTS OF Typ_Ueberlagernd_Flaeche = 
+        !!@ ilivalid.msg = "Typ '{Typ_Kt}' (Typ_Ueberlagernd_Flaeche) ist mit keinem Dokument verknüpft."
+    	MANDATORY CONSTRAINT 
+    		(
+				INTERLIS.objectCount(Dokument)>=1 
+				AND 
+				(
+					Typ_Kt == #N510_ueberlagernde_Ortsbildschutzzone
+					OR
+					Typ_Kt == #N523_Landschaftsschutzzone
+					OR
+					Typ_Kt == #N526_kantonale_Landwirtschafts_und_Schutzzone_Witi
+					OR
+					Typ_Kt == #N527_kantonale_Uferschutzzone
+					OR
+					Typ_Kt == #N528_kommunale_Uferschutzzone_ausserhalb_Bauzonen
+					OR
+					Typ_Kt == #N529_weitere_Schutzzonen_fuer_Lebensraeume_und_Landschaften
+					OR
+					Typ_Kt == #N590_Hofstattzone_Freihaltezone
+					OR
+					Typ_Kt == #N591_Bauliche_Einschraenkungen
+					OR
+					Typ_Kt == #N690_kantonales_Vorranggebiet_Natur_und_Landschaft
+					OR
+					Typ_Kt == #N691_kommunales_Vorranggebiet_Natur_und_Landschaft
+					OR
+					Typ_Kt == #N692_Planungszone
+					OR
+					Typ_Kt == #N699_weitere_flaechenbezogene_Festlegungen_NP
+					OR
+					Typ_Kt == #N812_geologisches_Objekt
+					OR
+					Typ_Kt == #N813_Naturobjekt
+					OR
+					Typ_Kt == #N822_schuetzenswertes_Kulturobjekt
+					OR
+					Typ_Kt == #N823_erhaltenswertes_Kulturobjekt
+					OR
+					Typ_Kt == #N610_Perimeter_kantonaler_Nutzungsplan
+					OR
+					Typ_Kt == #N611_Perimeter_kommunaler_Gestaltungsplan
+					OR
+					Typ_Kt == #N620_Perimeter_Gestaltungsplanpflicht
+					OR
+					Typ_Kt == #N680_Empfindlichkeitsstufe_I
+					OR
+					Typ_Kt == #N681_Empfindlichkeitsstufe_II
+					OR
+					Typ_Kt == #N682_Empfindlichkeitsstufe_II_aufgestuft
+					OR
+					Typ_Kt == #N683_Empfindlichkeitsstufe_III
+					OR
+					Typ_Kt == #N684_Empfindlichkeitsstufe_III_aufgestuft
+					OR
+					Typ_Kt == #N685_Empfindlichkeitsstufe_IV
+					OR
+					Typ_Kt == #N686_keine_Empfindlichkeitsstufe
+				)
+    		) 
+    		OR 
+    		(
+				Typ_Kt == #N520_BLN_Gebiet
+				OR
+				Typ_Kt == #N521_Juraschutzzone
+				OR
+				Typ_Kt == #N522_Naturreservat_inkl_Geotope
+				OR
+				Typ_Kt == #N524_Siedlungstrennguertel_von_kommunaler_Bedeutung
+				OR
+				Typ_Kt == #N525_Siedlungstrennguertel_von_kantonaler_Bedeutung
+				OR
+				Typ_Kt == #N530_Naturgefahren_erhebliche_Gefaehrdung
+				OR
+				Typ_Kt == #N531_Naturgefahren_mittlere_Gefaehrdung
+				OR
+				Typ_Kt == #N532_Naturgefahren_geringe_Gefaehrdung
+				OR
+				Typ_Kt == #N533_Naturgefahren_Restgefaehrdung
+				OR
+				Typ_Kt == #N592_Hecken_Feldgehoelz_Ufergehoelz
+				OR
+				Typ_Kt == #N593_Grundwasserschutzzone_S1
+				OR
+				Typ_Kt == #N594_Grundwasserschutzzone_S2
+				OR
+				Typ_Kt == #N595_Grundwasserschutzzone_S3
+				OR
+				Typ_Kt == #N596_Grundwasserschutzareal
+				OR
+				Typ_Kt == #N599_weitere_ueberlagernde_Nutzungszonen
+				OR
+				Typ_Kt == #N820_kantonal_geschuetztes_Kulturobjekt
+				OR
+				Typ_Kt == #N821_kommunal_geschuetztes_Kulturobjekt
+    		); 
+    END;    
+
+    CONSTRAINTS OF Typ_Ueberlagernd_Punkt = 
+        !!@ ilivalid.msg = "Typ '{Typ_Kt}' (Typ_Ueberlagernd_Punkt) ist mit keinem Dokument verknüpft."
+    	MANDATORY CONSTRAINT 
+    		(
+				INTERLIS.objectCount(Dokument)>=1 
+				AND 
+				(
+					Typ_Kt == #N811_erhaltenswerter_Einzelbaum
+					OR
+					Typ_Kt == #N820_kantonal_geschuetztes_Kulturobjekt
+					OR
+					Typ_Kt == #N822_schuetzenswertes_Kulturobjekt
+					OR
+					Typ_Kt == #N823_erhaltenswertes_Kulturobjekt
+				)
+    		) 
+    		OR 
+    		(
+				Typ_Kt == #N810_geschuetzter_Einzelbaum
+				OR
+				Typ_Kt == #N812_geologisches_Objekt
+				OR
+				Typ_Kt == #N813_Naturobjekt
+				OR
+				Typ_Kt == #N899_weitere_punktbezogene_Festlegungen_NP
+    		); 
+    END; 
+    
     CLASS Grundnutzung =
       /** Geometrie als Gebietseinteilung. Überlappungen bei Radien mit einer
        * Pfeilhöhe <1 mm werden toleriert.
@@ -492,6 +731,29 @@ VERSION "2017-11-18"  =
       Typ_Ueberlagernd_Flaeche -<> {1} Typ_Ueberlagernd_Flaeche;
       Ueberlagernd_Flaeche -- {0..*} Ueberlagernd_Flaeche;
     END Typ_Ueberlagernd_Flaeche_Flaeche;
+        
+    CONSTRAINTS OF Ueberlagernd_Flaeche = 
+    	!!@ name = laermempfindlichkeitsAreaCheck
+      	!! !!@ ilivalid.msg = "Lärmempfindlichkeitstypen überlappen sich."
+    	SET CONSTRAINT 
+    		WHERE 
+    		(
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N680_Empfindlichkeitsstufe_I 
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N681_Empfindlichkeitsstufe_II				
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N682_Empfindlichkeitsstufe_II_aufgestuft				
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N683_Empfindlichkeitsstufe_III
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N684_Empfindlichkeitsstufe_III_aufgestuft			
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N685_Empfindlichkeitsstufe_IV				
+				OR 
+				Typ_Ueberlagernd_Flaeche->Typ_Kt==#N686_keine_Empfindlichkeitsstufe								
+    		) : INTERLIS.areAreas(ALL, UNDEFINED, >> Geometrie);
+    	!!SET CONSTRAINT INTERLIS.areAreas(ALL, UNDEFINED, >> Geometrie);
+    END;       
 
     /** Ein Typ_Ueberlagernd_Linie kann mehrere überlagernde Geometrien haben.
      */
@@ -671,6 +933,54 @@ VERSION "2017-11-18"  =
       Dokument (EXTERNAL) -- {0..*} SO_Nutzungsplanung_20171118.Rechtsvorschriften.Dokument;
     END Typ_Erschliessung_Linienobjekt_Dokument;
 
+    CONSTRAINTS OF Typ_Erschliessung_Linienobjekt = 
+        !!@ ilivalid.msg = "Typ '{Typ_Kt}' (Typ_Erschliessung_Linienobjekt) ist mit keinem Dokument verknüpft."
+    	MANDATORY CONSTRAINT 
+    		(
+				INTERLIS.objectCount(Dokument)>=1 
+				AND 
+				(
+					Typ_Kt == #E711_Baulinie_Strasse_kantonal
+					OR
+					Typ_Kt == #E712_Vorbaulinie_kantonal
+					OR
+					Typ_Kt == #E713_Gestaltungsbaulinie_kantonal
+					OR
+					Typ_Kt == #E714_Rueckwaertige_Baulinie_kantonal
+					OR
+					Typ_Kt == #E715_Baulinie_Infrastruktur_kantonal
+					OR
+					Typ_Kt == #E719_weitere_nationale_und_kantonale_Baulinien
+					OR
+					Typ_Kt == #E720_Baulinie_Strasse
+					OR
+					Typ_Kt == #E721_Vorbaulinie
+					OR
+					Typ_Kt == #E722_Gestaltungsbaulinie
+					OR
+					Typ_Kt == #E723_Rueckwaertige_Baulinie
+					OR
+					Typ_Kt == #E724_Baulinie_Infrastruktur
+					OR
+					Typ_Kt == #E725_Waldabstandslinie
+					OR
+					Typ_Kt == #E726_Baulinie_Hecke
+					OR
+					Typ_Kt == #E727_Baulinie_Gewaesser
+					OR
+					Typ_Kt == #E728_Immissionsstreifen
+					OR
+					Typ_Kt == #E729_weitere_kommunale_Baulinien
+				)
+    		) 
+    		OR 
+    		(
+				Typ_Kt == #E710_nationale_Baulinie
+				OR
+				Typ_Kt == #E789_weitere_linienbezogene_Objekte_EP
+    		); 
+    END; 
+    
     CLASS Erschliessung_Linienobjekt =
       Geometrie : MANDATORY GeometryCHLV95_V1.Line;
       /** leer lassen
