@@ -19,8 +19,6 @@ Jar-Datei umbennen: `1.20.14-PATCH.jar` und in `libs`-Ordner in diesem Repositor
 gradle clean jar
 ```
 
-
-
 Run:
 ```
 java -jar build/libs/ilivalidator-nplso.jar --config models/so_nutzungsplanung_20171118.toml --modeldir "http://models.geo.admin.ch;models" --plugins plugins/ /Users/stefan/Downloads/2405.xtf 2>&1 | tee fubar.log
